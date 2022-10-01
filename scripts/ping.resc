@@ -1,0 +1,19 @@
+using sysbus
+
+$name="ping"
+mach create $name
+machine LoadPlatformDescription @platforms/boards/board.repl
+machine LoadPlatformDescription @platforms/cpus/stm32f4_ccm.repl
+
+$bin?=@ping/ping.elf
+
+showAnalyzer usart2
+logLevel -1 gpioPortA
+#cpu LogFunctionNames true
+
+macro reset
+"""
+    sysbus LoadELF $bin
+"""
+
+runMacro $reset

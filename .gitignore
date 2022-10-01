@@ -1,0 +1,7 @@
+.venv
+**/bin
+*.o
+*.d
+*.ld
+*.elf
+*.bin

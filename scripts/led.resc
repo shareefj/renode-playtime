@@ -1,0 +1,19 @@
+using sysbus
+
+$name="led"
+mach create $name
+machine LoadPlatformDescription @platforms/boards/board.repl
+machine LoadPlatformDescription @platforms/cpus/stm32f4_ccm.repl
+cpu PerformanceInMips 1
+
+$bin?=@led/led.elf
+
+showAnalyzer usart2
+logLevel -1 UserLED
+
+macro reset
+"""
+    sysbus LoadELF $bin
+"""
+
+runMacro $reset

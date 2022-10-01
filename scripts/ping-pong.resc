@@ -1,0 +1,24 @@
+:name: Ping-Pong
+:description: An example of using the GPIOConnector class to connect two nodes
+
+using sysbus
+
+emulation CreateGPIOConnector "hso-con"
+emulation CreateGPIOConnector "hsi-con"
+
+i @scripts/ping.resc
+connector Connect gpioPortA hso-con
+connector Connect gpioPortA hsi-con
+hso-con SelectSourcePin gpioPortA 0
+hsi-con SelectDestinationPin gpioPortA 1
+mach clear
+
+
+i @scripts/pong.resc
+connector Connect gpioPortA hso-con
+connector Connect gpioPortA hsi-con
+hso-con SelectDestinationPin gpioPortA 0
+hsi-con SelectSourcePin gpioPortA 1
+mach clear
+
+
