@@ -5,7 +5,7 @@ mach create $name
 machine LoadPlatformDescription @platforms/boards/board.repl
 machine LoadPlatformDescription @platforms/cpus/stm32f4_ccm.repl
 
-$bin?=@pong/pong.elf
+$bin?=@firmware/pong/pong.elf
 
 showAnalyzer usart2
 #cpu LogFunctionNames true

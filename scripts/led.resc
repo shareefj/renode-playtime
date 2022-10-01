@@ -6,7 +6,7 @@ machine LoadPlatformDescription @platforms/boards/board.repl
 machine LoadPlatformDescription @platforms/cpus/stm32f4_ccm.repl
 cpu PerformanceInMips 1
 
-$bin?=@led/led.elf
+$bin?=@firmware/led/led.elf
 
 showAnalyzer usart2
 logLevel -1 UserLED
